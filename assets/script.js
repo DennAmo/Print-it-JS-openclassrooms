@@ -16,3 +16,17 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+
+const $arrowLeft = document.querySelector(".arrow_left");
+const $arrowRight = document.querySelector(".arrow_right");
+const $dot = document.querySelectorAll(".dot")
+
+let currentIndex = 0
+console.log(slides[currentIndex]);
+
+$arrowLeft.addEventListener("click", previous)
+
+function previous() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    console.log(slides[currentIndex]);
+}
