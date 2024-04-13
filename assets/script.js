@@ -14,33 +14,58 @@ const slides = [
 	{
 		"image":"./assets/images/slideshow/slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
-	}
+	},
 ]
 
 const $arrowLeft = document.querySelector(".arrow_left");
 const $arrowRight = document.querySelector(".arrow_right");
-const $dot = document.querySelectorAll(".dot");
-const $image = document.querySelector(".banner-img");
+const $dots = document.querySelector(".dots");
+const $bannerImg = document.querySelector(".banner-img");
 
 let currentIndex = 0
 console.log(slides[currentIndex]);
+
+function dotImage(index) {
+	currentIndex = index;
+    $bannerImg.src = slides[currentIndex].image;
+    console.log(slides[currentIndex]);
+}
 
 function next() {
 	currentIndex = currentIndex + 1;
 	if (currentIndex === 4) {
         currentIndex = 0
     }
-	$image.src = slides[currentIndex].image;
+	$bannerImg.src = slides[currentIndex].image;
 	console.log(slides[currentIndex]);
 }
+
 function previous() {
     currentIndex = currentIndex - 1
 	if (currentIndex === -1) {
 		currentIndex = 3
 	}
-	$image.src = slides[currentIndex].image;
+	$bannerImg.src = slides[currentIndex].image;
 	console.log(slides[currentIndex]);
 }
+
+
+slides.forEach((slide, index) => {
+	let $dot = document.createElement("div")
+	$dots.appendChild($dot);
+	$dot.classList.add("dot");
+    $dot.addEventListener("click", () => {
+        dotImage(index);
+        document.querySelectorAll(".dot").forEach(dot => {
+            dot.classList.remove("dot_selected");
+        });
+        $dot.classList.add("dot_selected");
+    });
+	if (currentIndex === 0) {
+        $dot.classList.add("selected");
+    }
+	});
+	
 
 $arrowLeft.addEventListener("click", previous);
 $arrowRight.addEventListener("click", next);
