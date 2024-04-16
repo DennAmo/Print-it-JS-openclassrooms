@@ -24,10 +24,10 @@ const $bannerImg = document.querySelector(".banner-img");
 let currentIndex = 0
 
 function updateDotSelection() {
-    document.querySelectorAll(".dot").forEach(dot => {
-        dot.classList.remove("dot_selected");
-    });
-    document.querySelectorAll(".dot")[currentIndex].classList.add("dot_selected");
+	document.querySelectorAll(".dot").forEach(dot => {
+		dot.classList.remove("dot_selected");
+	});
+	document.querySelectorAll(".dot")[currentIndex].classList.add("dot_selected");
 	console.log(slides[currentIndex]);
 }
 
