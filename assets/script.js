@@ -23,13 +23,7 @@ const $dots = document.querySelector(".dots");
 const $bannerImg = document.querySelector(".banner-img");
 let currentIndex = 0
 
-function updateDotSelection() {
-	document.querySelectorAll(".dot").forEach(dot => {
-		dot.classList.remove("dot_selected");
-	});
-	document.querySelectorAll(".dot")[currentIndex].classList.add("dot_selected");
-	console.log(slides[currentIndex]);
-}
+console.log(slides[currentIndex]);
 
 for (let i = 0; i < slides.length; i++) {
 	let $dot = document.createElement("div")
@@ -41,6 +35,14 @@ for (let i = 0; i < slides.length; i++) {
 	$dot.addEventListener("click", () => {
 		dotImage(i);
 	});
+}
+
+function updateDotSelection() {
+	document.querySelectorAll(".dot").forEach(dot => {
+		dot.classList.remove("dot_selected");
+	});
+	document.querySelectorAll(".dot")[currentIndex].classList.add("dot_selected");
+	console.log(slides[currentIndex]);
 }
 
 function dotImage(index) {
