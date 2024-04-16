@@ -28,6 +28,7 @@ function updateDotSelection() {
         dot.classList.remove("dot_selected");
     });
     document.querySelectorAll(".dot")[currentIndex].classList.add("dot_selected");
+	console.log(slides[currentIndex]);
 }
 
 for (let i = 0; i < slides.length; i++) {
@@ -46,7 +47,6 @@ function dotImage(index) {
 	currentIndex = index;
 	$bannerImg.src = slides[currentIndex].image;
 	updateDotSelection();
-	console.log(slides[currentIndex]);
 }
 
 function next() {
@@ -55,7 +55,6 @@ function next() {
 		currentIndex = 0
 	}
 	$bannerImg.src = slides[currentIndex].image;
-	console.log(slides[currentIndex]);
 	updateDotSelection();
 }
 
@@ -65,7 +64,6 @@ function previous() {
 		currentIndex = 3
 	}
 	$bannerImg.src = slides[currentIndex].image;
-	console.log(slides[currentIndex]);
 	updateDotSelection();
 }
 
