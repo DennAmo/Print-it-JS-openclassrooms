@@ -21,7 +21,8 @@ const $arrowLeft = document.querySelector(".arrow_left");
 const $arrowRight = document.querySelector(".arrow_right");
 const $dots = document.querySelector(".dots");
 const $bannerImg = document.querySelector(".banner-img");
-let currentIndex = 0
+const $banner = document.querySelector("#banner p");
+let currentIndex = 0;
 
 console.log(slides[currentIndex]);
 
@@ -45,28 +46,31 @@ function updateDotSelection() {
 	console.log(slides[currentIndex]);
 }
 
+function updateContent() {
+	$bannerImg.src = slides[currentIndex].image;
+	$banner.innerHTML = slides[currentIndex].tagLine;
+	updateDotSelection();
+}
+
 function dotImage(index) {
 	currentIndex = index;
-	$bannerImg.src = slides[currentIndex].image;
-	updateDotSelection();
+	updateContent()
 }
 
 function next() {
 	currentIndex = currentIndex + 1;
-	if (currentIndex === 4) {
-		currentIndex = 0
+	if (currentIndex === slides.length) {
+		currentIndex = 0;
 	}
-	$bannerImg.src = slides[currentIndex].image;
-	updateDotSelection();
+	updateContent()
 }
 
 function previous() {
-	currentIndex = currentIndex - 1
-	if (currentIndex === -1) {
-		currentIndex = 3
+	currentIndex = currentIndex - 1;
+	if (currentIndex < 0) {
+		currentIndex = slides.length -1;
 	}
-	$bannerImg.src = slides[currentIndex].image;
-	updateDotSelection();
+	updateContent()
 }
 
 $arrowLeft.addEventListener("click", previous);
